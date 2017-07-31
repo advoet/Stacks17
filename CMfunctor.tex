@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+ 
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{theorem}
+\newtheorem{proposition}{Proposition}[section]
+ 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{definition}
+\newtheorem{example}{Example}[section]
+
+\setcounter{section}{-1}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{2pt}
+\renewcommand\footrulewidth{0pt}
+
+\setlength\parindent{0pt}
+
+
+%
+% Title Page
+%
+
+\title{
+    \textmd{\textbf{CM Functor}}\\
+}
+
+\author{}
+\date{}
+
+
+
+% Alex's Custom Commands
+\newcommand{\bb}{\mathbb}
+\newcommand{\CMfunctor}{\text{CM}}
+% if \P is already a command
+% \renewcommand{•}{•}
+
+
+
+
+\begin{document}
+\maketitle
+
+\section{The (Honsen?) functor}
+\label{section-cm}
+
+\noindent
+In this section we prove the (Honsen?) functor is an algebraic space.\\
+
+%Stacks proj formatting
+%\begin{situation}
+%\label{situation-cm}
+Let $S$ be a scheme. Let $f : X \to B$ be a morphism of
+algebraic spaces over $S$. Assume that $f$ is of separated and of finite presentation.\\
+
+For any scheme $T$ over $B$ we will denote $X_T$ the base change of $X$ to $T$.\\
+
+Given such a $T$ we set:
+\begin{align*}
+\CMfunctor_{X/B}(T) = & (h, C \to T, g)  \text{ where } 
+h \text{ is a morphism } h : T \to B \text{ and } g \text{ is a morphism } g : C \to X \\ & \text{satisfying the following properties}
+\end{align*}
+\begin{enumerate}
+\item The diagram below is commutative: 
+
+\[ \begin{tikzcd}
+C \arrow{r}{g} \arrow{d} & X \arrow{d} \\%
+T \arrow{r}{h}& B
+\end{tikzcd}
+\]
+
+\item $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
+\item The induced morphism $(g’) : C \to X_T$ is finite
+\item There is an open $U \subset X_T$ where
+\begin{enumerate}
+\item $(g’)^{-1}(U) \to U$ is a closed immersion
+\item For every closed $t \in T$, the fiber $\left((g’)^{-1}(U)\right)_t$ is dense in $C_t$
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
