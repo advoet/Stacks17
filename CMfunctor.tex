@@ -30,6 +30,8 @@
 \theoremstyle{definition}
 \newtheorem{example}{Example}[section]
 
+\DeclareMathOperator{\Spec}{Spec}
+
 \setcounter{section}{-1}
 
 \usetikzlibrary{automata,positioning}
@@ -123,8 +125,28 @@ T \arrow{r}{h}& B
 \end{enumerate}
 
 \begin{lemma}
-	For every field $k$ and every $x_0\in \CMfunctor_{X/B}(k)$, $T\CMfunctor_{X/B,k,x_0}$ is finite-dimensional.
+	For every field $k$ and every $x_0\in \CMfunctor_{X/B}(k)$, $T_{k,x_0}\CMfunctor_{X/B}$ is finite-dimensional.
 	\label{lem:axiom3}
 \end{lemma}
+\begin{proof}
+	An element in $ T_{k,x_0}\CMfunctor_{X/B}$ is simply an element
+	\[(h',C'\rightarrow \Spec(k[\epsilon]),g')\in \CMfunctor_{X/B}(\Spec(k[\epsilon]))\]
+	which restricts to $x_0$ under 
+	\[\CMfunctor_{X/B}(\Spec(k[\epsilon]))\rightarrow\CMfunctor_{X/B}(\Spec(k)).\]
+	Note that this implies that $h'=h$.
 
+	First, observe that there is an obvious forgetful morphism
+	\[\CMfunctor_{X/B}\rightarrow Spaces'_{fp,flat,proper}\]
+	which sends $(h,C\rightarrow T,g)$ to $C$.
+
+	This induces a morphism of tangent spaces which sends $(C',g')$ to $C'$.
+
+	Clearly, a tangent vector is in the kernel of this morphism if and only if $C'\cong C\times_{\Spec(k)} \Spec(k[\epsilon])$.
+	
+	This implies that $g':C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X$ induces a tangent vector in $T_gMor(C,X)$.
+
+	Thus, the kernel of
+	\[T_{k,x_0}\CMfunctor_{X/B}\rightarrow T_{C}Spaces'_{fp,flat,proper}\]
+	is included in the finite-dimensional tangent space $T_gMor(C,X)$.
+	\end{proof}
 \end{document}
