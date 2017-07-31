@@ -272,24 +272,37 @@ $$
 	\label{lem:axiom3}
 \end{lemma}
 \begin{proof}
-	An element in $ T_{k,x_0}\CMfunctor_{X/B}$ is simply an element
-	\[(h',C'\rightarrow \Spec(k[\epsilon]),g')\in \CMfunctor_{X/B}(\Spec(k[\epsilon]))\]
-	which restricts to $x_0$ under 
-	\[\CMfunctor_{X/B}(\Spec(k[\epsilon]))\rightarrow\CMfunctor_{X/B}(\Spec(k)).\]
-	Note that this implies that $h'=h$.
+	First, we may assume that $S=B$.
 
-	First, observe that there is an obvious forgetful morphism
-	\[\CMfunctor_{X/B}\rightarrow Spaces'_{fp,flat,proper}\]
+	An element in $ T_{k,x_0}\CMfunctor_{X/S}$ is simply an element
+	\[(h',C'\rightarrow \Spec(k[\epsilon]),g')\in \CMfunctor_{X/S}(\Spec(k[\epsilon]))\]
+	which restricts to $x_0$ under 
+	\[\CMfunctor_{X/S}(\Spec(k[\epsilon]))\rightarrow\CMfunctor_{X/S}(\Spec(k)).\]
+	Note that $h'$ is $h$ composed with the natural morphism $\Spec(k[\epsilon])\rightarrow\Spec(k)$ because we are working with $S$-schemes.
+
+	Observe that there is an obvious forgetful morphism
+	\[\CMfunctor_{X/S}\rightarrow Spaces'_{fp,flat,proper}\]
 	which sends $(h,C\rightarrow T,g)$ to $C$.
 
 	This induces a morphism of tangent spaces which sends $(C',g')$ to $C'$.
 
 	Clearly, a tangent vector is in the kernel of this morphism if and only if $C'\cong C\times_{\Spec(k)} \Spec(k[\epsilon])$.
 	
-	This implies that $g':C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X$ induces a tangent vector in $T_gMor(C,X)$.
+	Recall that $Mor(C,X_k)$ associates to a test scheme $T\rightarrow S$ the set of morphisms $C_T\rightarrow X_k|_T$.
+	The tangent space at $g$ is the set of commutative diagrams
+	\[\xymatrix{
+		&C\ar[rr]^{g}\ar[dr]|!{[d];[rr]}\hole\ar[dl] & & X_k\ar[dll]\ar[dl]\\
+		C\times_{\Spec(k)}\Spec(k[\epsilon])\ar[r]\ar[dr]&X_k\times_{\Spec(k)}\Spec(k[\epsilon])\ar[d]& \Spec(k)\ar[dl]\ar[d] & \\
+		&\Spec(k[\epsilon])\ar[r] & S&
+	}\]
+	Clearly, a morphism $C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X_k$ extending $g$ can be composed with the natural map $X_k\rightarrow X_k\times_{\Spec(k)}\Spec(k[\epsilon])$ to uniquely produce such a diagram.
+
+	This implies that $g':C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X_k$ induces a tangent vector in $T_gMor(C,X_k)$.
 
 	Thus, the kernel of
-	\[T_{k,x_0}\CMfunctor_{X/B}\rightarrow T_{C}Spaces'_{fp,flat,proper}\]
-	is included in the finite-dimensional tangent space $T_gMor(C,X)$.
+	\[T_{k,x_0}\CMfunctor_{X/S}\rightarrow T_{C}Spaces'_{fp,flat,proper}\]
+	is included in the finite-dimensional tangent space $T_gMor(C,X_k)$.
+
+	Altogether, we conclude that $T_{k,x_0}\CMfunctor_{X/S}$ is finite-dimensional, as claimed.
 	\end{proof}
 \end{document}
