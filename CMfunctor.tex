@@ -266,7 +266,35 @@ $$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
+\begin{lemma}
+	In Situation \ref{situation-cm}, the diagonal morphism 
+	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
+	is representable by schemes.
+	\label{cm-rep-diagonal}
+\end{lemma}
+\begin{proof}
+	Let $( (h_0,C_0\rightarrow T, g_0) ,( h_1, C_1\rightarrow T, g_1))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$.
+	First, observe that the pair induces an element $(C_0\rightarrow T,C_1\rightarrow T)$ in $\textit{B-curves}\times \textit{B-curves}(T)$.
+	Because $\textit{B-curves}$ is an algebraic stack, its diagonal pulled back to $T$ is an algebraic space $U$.
 
+	At this point, we have
+	\[\xymatrix{
+		C\ar[d] & \\
+		U\ar[r] & T
+	}\]
+	and two $T$-morphisms $C\xrightarrow{g_0,g_1} X$.
+	Then using the fact that $Mor(C,X)$ is an algebraic stack, the equalizer defines an algebraic space $V$ over $T$ with the property that
+	\[\xymatrix{
+		C\ar[rr]\ar[dr]\ar[dd]&&C_0\ar[dd]|!{[dl];[dr]}\hole\ar[dr]^{g_0}&\\
+		&C_1\ar[rr]^(.25){g_1}\ar[dr]& & X\ar[d]\\
+		V\ar[rr]& & T\ar[r]^{h} & B
+	}
+	\]
+	is commutative.
+
+	Because $C\cong C_0|_V$, properties (2) and (3) hold because they are stable under base change.
+	For property (4), simply pull back the open set in $C_0$ to $C$.
+\end{proof}
 \begin{lemma}\label{cm-fibered-in-setoids}
 Let $S$ be a scheme.
 Let $T$ a scheme over $S$.
