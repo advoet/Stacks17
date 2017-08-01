@@ -250,22 +250,86 @@ of $X$ to $T$. Given such a $T$ we set:
 h \text{ is a morphism } h : T \to B \text{ and } g \text{ is a morphism } g : C \to X \\ & \text{satisfying the following properties}
 \end{align*}
 \begin{enumerate}
-\item The diagram below is commutative: 
+\item\label{situation-cm-diagram} The diagram below is commutative: 
 $$
 \xymatrix{
 C \ar[r]_g \ar[d] & X \ar[d] \\
 T \ar[r]^h & B
 }
 $$
-\item $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
-\item The induced morphism $(g') : C \to X_T$ is finite
-\item There is an open $U \subset X_T$ where
+\item\label{situation-cm-morphism} $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
+\item\label{situation-cm-finite} The induced morphism $(g') : C \to X_T$ is finite
+\item\label{situation-cm-open} There is an open $U \subset X_T$ where
 \begin{enumerate}
 \item $(g')^{-1}(U) \to U$ is a closed immersion
 \item For every $t \in T$, the fiber $\left((g')^{-1}(U)\right)_t$ is dense in $C_t$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
+
+\begin{lemma}\label{cm-fibered-in-setoids}
+Let $S$ be a scheme.
+Let $T$ a scheme over $S$.
+Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
+Then for any two elements $\gamma_1 = (h_1,C_1 \to T,g_1)$ and $\gamma_2 = (h_2,C_2 \to T,g_2)$ of $\CMfunctor_{X/B}(T)$.
+Then there is at most one isomorphism $\gamma_1 \to \gamma_2$.
+\end{lemma}
+\begin{proof}
+Let $a,b \colon \gamma_1 \to \gamma_2$ be two isomorphisms.
+Then $h_1 = h_2$ and $a,b$ correspond to isomorphisms $\bar{a},\bar{b} \colon C_1 \xrightarrow{\sim} C_2$ making the following diagram commutative:
+\[ \xymatrix{
+  C_1 \ar[r]^{g_1} \ar[d]_{\bar{a},\bar{b}} & X \ar@{=}[d] \\
+C_2 \ar[r]^{g_2} & X
+} \]
+Let $U \subset X_T$ be an open subset satisfying condition~(\ref{situation-cm-open}) from Situation~\ref{situation-cm} for $\gamma_2$.
+Let $U' = (g'_2)^{-1}(U)$ and $V' = \bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$.
+Then $g'_2|_{U'}$ is a closed immersion of algebraic spaces, hence a monomorphism (Lemma~Tag 042R).
+As $g'_2|_{U'} \circ \bar{a}|_{V'} = g'_2|_{U'} \circ \bar{b}|_{V'}$, we have $\bar{a}|_{V'} = \bar{b}|_{V'}$.
+
+On the other hand, $U' \subset C_2$ is scheme theoretically dense.
+Since $\bar{a}$ and $\bar{b}$ are isomorphisms, $\bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$ is scheme theoretically dense by Lemma~Tag 0837.
+Lemma~Tag 084N shows that $\bar{a} = \bar{b}$, and thus $a = b$.
+\end{proof}
+
+\begin{lemma}
+Let $S$ be a scheme.
+Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
+Then the functor $\CMfunctor_{X/B}$ is a sheaf for the fppf topology.
+\end{lemma}
+\begin{proof}
+Let $T$ be a scheme over $S$.
+Let $\{ T_i \to T \}_{i \in I}$ an fppf covering of $T$.
+We must prove that
+\[ \xymatrix{
+  \CMfunctor_{X/B}(T) \ar[r] & \prod\nolimits_{i\in I} \CMfunctor_{X/B}(T_i) \ar@<1ex>[r]^-{\text{pr}_0^*} \ar@<-1ex>[r]_-{\text{pr}_1^*} & \prod\nolimits_{(i_0, i_1) \in I \times I} \CMfunctor_{X/B}(T_{i_0} \times_T T_{i_1})
+} \]
+is an equalizer diagram.
+Injectivity is immediate from descent for algebraic spaces, see Lemma~Tag 0ADT, and because $X$ and $B$ are, per definition, sheaves for the fppf topology.
+
+Let us proceed to exactness in the middle.
+Suppose we are given $\gamma_i = (h_i,C_i \to T,g_i) \in \CMfunctor_{X/B}(T_i)$ such that 
+\[ \gamma_i|_{T_i \times_T T_j} = \gamma_j|_{T_i \times_T T_j} \]
+for all $i,j \in I$.
+In particular, there exist isomorphisms $\varphi_{ij} \colon C_i \times_T T_j \xrightarrow{\sim} T_i \times_T C_j$ such that $g_j|_{T_i \times_T T_j} \circ \varphi_{ij} = g_i|_{T_i \times_T T_j}$.
+By Lemma~\ref{cm-fibered-in-setoids}, $(C_i,\varphi_{ij})$ forms a descent datum for algebraic spaces relative to $\{T_i \to T\}$.
+As fppf descent data for algebraic spaces of finite type are effective, Lemma~Tag 04TR and Lemma~Tag 04U0, there is an algebraic space $C \to T$ such that $C \times_T T_i = C_i$; see also the proof of condition (3) in Lemma~Tag 0D1G.
+Further, since algebraic spaces are sheaves in the fppf topology, the morphisms $g_i \colon C_i \to X$ and $h_i \colon T_i \to B$ glue to morphisms $g \colon C \to X$ and $h \colon T \to B$, respectively.
+
+Set $\gamma = (h,C\to T,g)$.
+It remains to show that $\gamma \in \CMfunctor_{X/B}(T)$.
+Property~(\ref{situation-cm-diagram}) holds because commutativity of the diagram can be checked fppf locally on $C$.
+
+The morphism $C \to T$ is of relative dimension $1$, flat, proper, and of finite presentation by Lemma~Tag 02VJ, Lemma~Tag 02L2, Lemma~Tag 02L1, and Lemma~Tag 02L0.
+Moreover, for a flat morphism, being Cohen-Macaulay can be checked on fibers, see Lemma~Tag 0E0W. That establishes property~(\ref{situation-cm-morphism}).
+
+For property~(\ref{situation-cm-finite}), the finiteness of $(g') \colon C \to X_T$ can again be seen fppf locally on $X_T$ from the finiteness of the $(g')|_{T_i} = (g'_i) \colon C_i \to X_{T_i}$ by Lemma~Tag 02LA.
+
+Finally, let $U = X_T \setminus (\text{Supp}\Coker(\mathcal{O}_{X_T} \to (g')_*\mathcal{O}_C))$.
+This is the largest open subset for which $(g')^{-1}(U) \to U$ is an open immersion.
+For $t \in T$, choose $i \in I$ such that $t \in \Im(T_i \to T)$.
+Let $\tilde{t} \in T_i$ be a point mapping to $t$.
+Then $((g')^{-1}(U))_t = ((g'_i)^{-1}(U))_{\tilde{t}}$ is dense in $C_t = (C_{i})_{\tilde{t}}$, yielding property~(\ref{situation-cm-open}).
+\end{proof}
 
 \begin{lemma}
 	For every field $k$ and every $x_0\in \CMfunctor_{X/B}(k)$, $T_{k,x_0}\CMfunctor_{X/B}$ is finite-dimensional.
