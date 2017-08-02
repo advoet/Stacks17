@@ -266,6 +266,7 @@ $\left((g?)^{-1}(U)\right)_t$ is dense in $C_t$
 \end{situation}
 
 Effectiveness of formal objects:
+\\
 
 \begin{theorem} Fix a complete Noetherian local $\mathcal{O}_S$-algebra $A$ and a collection of $\Spec A/m_i$ points of $CM_{X/B}$ for all $i$ which are compatible, call it $(h_i,C_i,g_i)$. Then there exists a $\Spec A$ point of $CM_{X/B}$ which restricts to $(h_i,C_i,g_i)$. 
 \end{theorem}
@@ -273,22 +274,65 @@ Effectiveness of formal objects:
 \begin{proof}
 
 We view the data of $(h,C, g)$ as a coherent algebra on $X_T$ by considering $(g_T)_*\mathcal{O}_{X_T}$. Conversely, given a coherent algebra $\mathcal{A}$ on $X_T$ that is $T$-flat with proper support over $T$, we take the relative spectrum of $\mathcal{A}$. Let $(h_i,C_i,g_i)$ be a compatible system of $\Spec A/m^n$ points of $CM_{X/B}$ and consider the corresponding coherent algebras $\mathcal{A}_i$ on $X_i=X \times_B  \Spec A/m^i$. 
-The underlying coherent sheaf and its algebra structure can be described by morphisms $\hat{\mathcal{A}} \otimes \hat{\mathcal{A}} \to \hat{\mathcal{A}}$ and the unit $\mathcal{O}_{\hat{X}} \to \hat{\mathcal{A}}$. That this yields an algebra structure is expressed by the commutativity of certain diagrams. By Lemma 08BE these diagrams correspond to diagrams in $Coh_{X_A/\Spec A}$. As such we obtain a coherent algebra $\mathcal{A}$ on $X_A=X \times_B \Spec A$ whose relative spectrum is a candidate for algebraizing the formal point $(h_i,C_i,g_i)$ corresponding to $(\mathcal{A}_i)$. 
 \\
 
-It remains to show that $C=\underline{\Spec}_X(\mathcal{A})$ is a $\Spec A$-point of $CM_{X/B}$. Since it arises as the relative spectrum of a coherent algebra which is $\Spec A$-flat with proper support over $\Spec A$, $C \to X_{\Spec A}$ is finite with proper support of finite presentation. Since $C_i$ is $\Spec A/m^i$-flat for each $i$ Lemma 0523 shows $C$ is $\Spec A$-flat. To verify that $g_A: C \to X_A$ is a Cohen-Maucalay morphism use the fact that the closed fiber of $C \times_B \Spec A/m \to \Spec A/m$ is a Cohen-Maucalay morphism and Lemma 045U to conclude. 
+The underlying coherent sheaf and its algebra structure can be described by morphisms $\mathcal{A}_i \otimes \mathcal{A}_i \to \mathcal{A}_i$ and the unit $\mathcal{O}_{X_{A/m^i}} \to \mathcal{A}_i$. That this yields an algebra structure is expressed by the commutativity of certain diagrams. By Lemma 08BE these diagrams correspond to diagrams in $Coh_{X_A/\Spec A}$. As such we obtain a coherent algebra $\mathcal{A}$ on $X_A=X \times_B \Spec A$ whose relative spectrum is the candidate for algebraizing the formal point $(h_i,C_i,g_i)$ corresponding to $(\mathcal{A}_i)$. 
 \\
 
-It remains to show the locus where the morphism $C_T \to X_A$ is a closed immersion is dense on the fibers. Note that this locus is open as it can be identified with the complement of $\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])$ and the latter is closed because it is the support of a coherent sheaf. Since pullback is right exact and taking supports with restriction to a closed subscheme (Lemma 00L3) we obtain 
+It remains to show that $C=\underline{\Spec}_X(\mathcal{A})$ is a $\Spec A$-point of $CM_{X/B}$. Since it arises as the relative spectrum of a coherent algebra with proper support over $\Spec A$, $C \to X_{\Spec A}$ is finite with proper support of finite presentation over $\Spec A$. Since $C_i$ is $\Spec A/m^i$-flat for each $i$ Lemma 0523 shows $C$ is $\Spec A$-flat. To verify that $g_A: C \to X_A$ is a Cohen-Maucalay morphism use the fact that the closed fiber of $C \times_B \Spec A/m \to \Spec A/m$ is a Cohen-Maucalay morphism and Lemma 045U to conclude. To see that $C$ is a relative curve over $\Spec A$ apply Lemma 02NM, the fact that $C$ is proper over $\Spec A$, and that the closed fiber is relative dimension $1$. 
+\\
+
+It remains to show the locus where the morphism $C_T \to X_A$ is a closed immersion is dense on the fibers. Note that this locus is open as it can be identified with the complement of $\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])$ and the latter is closed because it is the support of a coherent sheaf. Since pullback is right exact and taking supports is compatible with restriction to a closed subscheme (Lemma 00L3) we obtain 
 
 \[\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])|_{\Spec A/m}=\text{Supp}(\text{Coker}[O_{X_{A/m}} \to \mathcal{A}_0]))\]
 
 and the latter is dense when pulled back to $C_0=C \times \Spec A/m$. This implies $g_A^{-1}(U)$ is dense in the closed fiber $C_0 \subset C$ and now we must conclude that it is dense in every fiber of $C$. Let $p \subset A$ be a prime ideal, by modding out and pulling back $g_A: C \to X_A$ we may suppose that $p=(0)$ is the generic point of $A$. 
 \\
 
-Suppose there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then none of its specializations lies in $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber we see that $U_0$ contains all of $Y \times_B \Spec {A/m}$ and therefore $U_0=Y$, a contradiction since $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
+If there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then the closure $\overline{\{\eta\}}$ is disjoint from $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber the closed fiber of $Y$ must have dimension $<1$. It follows that $U_0$ contains all of $Y \times_B \Spec {A/m}$ and therefore $Y \subset U_0$. Indeed, if $y \in Y$ then its closure must have a point in $Y \times \Spec A/m^i$ because $Y \to \Spec A$ is proper and $A$ is local. This contradicts the fact that $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
 
 \end{proof}
+
+Strong Effectiveness
+
+Let $(A_n)$ be a inverse system of rings with surjective transition maps which have locally nilpotent kernels. Take $A=\lim A_n$, to show the strong form of formal effectiveness we prove that if $CM_{X/B}$ admits a compatible system of $\Spec A_n$-points, $\zeta_n \in CM_{X/B}(\Spec A_n)$, then it admits a $\Spec A$-point $\zeta \in CM_{X/B}(\Spec A)$ which extends the $(\zeta_n)$. 
+
+\begin{theorem} Let $A=\lim A_n$ and $(\zeta_n)$ be as above. Then there exists a $\zeta \in CM_{X/B}(\Spec A)$ which extends the $(\zeta_n)$. 
+\end{theorem}
+
+We view the data of $(h,C, g) \in CM_{X/B}(T)$ as a quasicoherent algebra of finite presentation (as a $\mathcal{O}_T$-module) on $X_T$ by considering $(g_T)_*\mathcal{O}_{X_T}$. Conversely, given a quasicoherent algebra of finite presentation $\mathcal{A}$ on $X_T$ that is $T$-flat with proper support over $T$, we take the relative spectrum of $\mathcal{A}$. Let $(h_i,C_i,g_i)$ be a compatible system of $\Spec A_n$ points of $CM_{X/B}$ and consider the corresponding quasicoherent algebras $\mathcal{A}_i$ on $X_i=X \times_B  \Spec A_i$.
+\\
+
+First we algebraize the underlying quasicoherent module structure of the $(\mathcal{A}_n)$ to $\Spec A$ using Lemma 0CXB, call the resulting quasicoherent sheaf $\mathcal{A}$. It is flat over $\Spec A$, of finite presentation and has proper support over $\Spec A$. Next we will lift the algebra structure i.e. we need a $\Spec A$ point, $(m,u)$ of $Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{O}_{X_A},\mathcal{A})$ which yields a multiplication and a section which are commutative, associative and so that the section behaves as a unit element with respect to this multiplication. 
+
+That $(m,u)$ yields an algebra structure is expressed by the commutativity of certain diagrams whose arrows naturally depend only on the choice of multiplication and unit e.g. associativity is described as two different morphisms 
+\[m \circ (m \otimes 1), m \circ (1 \otimes m): \mathcal{A} \otimes \mathcal{A} \otimes \mathcal{A} \to \mathcal{A}\]
+being equal. Given a map $\Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A})$ these are two ways to get a map in $Hom(\mathcal{A} \otimes \mathcal{A} \otimes \mathcal{A}, \mathcal{A})$. i.e. we have a morphism of sheaves
+\[Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \to Hom(\mathcal{A} \otimes \mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{A} \otimes \mathcal{A} \otimes \mathcal{A}, \mathcal{A})\]
+and the pullback of the diagonal is a closed locus which consists of those maps $\mathcal{A} \otimes \mathcal{A} \to \mathcal{A}$ satisfying the associativity law. 
+\\
+
+By the exact same argument, the other diagrams which express the fact that a map $\mathcal{A} \otimes \mathcal{A} \to \mathcal{A}$ is an algebra-map also introduce a closed condition (scheme-theoretically) in $Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{O},\mathcal{A})$. Details omitted. 
+\\
+
+The scheme-theoretic intersection of these closed subschemes is exactly the locus of $Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{O},\mathcal{A})$ consisting of multiplication maps and units turning $\mathcal{A}$ into a algebra, call it $Y_{alg}$. 
+\\
+
+Since $\mathcal{A}|_{X_{\Spec A_n}}$ has algebra structures for every $n$ these give us $\Spec A_n$ points of $Y_{alg} \subset Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{O},\mathcal{A})$. By Lemma 08JT we know $Hom(\mathcal{A} \otimes \mathcal{A}, \mathcal{A}) \times Hom(\mathcal{O},\mathcal{A})$ and therefore $Y_{alg}$ is affine. So because we have compatible maps $H^0(Y_{alg},\mathcal{O}_{Y_{alg}}) \to A_n$ for every $n$ they factor as $H^0(Y_{alg},\mathcal{O}_{Y_{alg}}) \to A = \lim A_n \to  A_n$ and so we obtain $\Spec A_n \to \Spec A \to Y_{alg}$. Unwinding this, this says there is a unique lift of the algebra structure on $\mathcal{A}$ from that of the $\mathcal{A}_n$. 
+\\
+
+It remains to show that $C=\underline{\Spec}_X(\mathcal{A})$ is a $\Spec A$-point of $CM_{X/B}$. Since it arises as the relative spectrum of a finitely presented quasicoherent algebra which is $\Spec A$-flat with proper support over $\Spec A$, $C \to X_{\Spec A}$ is finite with proper support of finite presentation over $\Spec A$. Let $A \to A_0$ be natural map, it is surjective with kernel $I \subset A$. By Lemma 0CT7 we know that $I$ is a radical ideal, i.e. it is contained in all the maximal ideals of $A$. To verify that $g_A: C \to X_A$ is a Cohen-Maucalay morphism use the fact that the fiber product of $C \times_B \Spec A_0 \to \Spec A_0$ is a Cohen-Maucalay morphism and Lemma 045U to conclude. To see that $C$ is a relative curve over $\Spec A$ apply Lemma 02NM, the fact that $C$ is proper over $\Spec A$, and that the fiber product $C \times_A \Spec A/I$ is relative dimension $1$ over $\Spec A/I$. 
+\\
+
+To finish we shall show the locus where the morphism $C \to X_A$ is a closed immersion is dense on the fibers. Note that this locus is open as it can be identified with the complement of $\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])$ and the latter is closed because it is the support of a finitely presented quasicoherent sheaf. Since pullback is right exact and taking supports is compatible with restriction to a closed subscheme (Lemma 00L3) we obtain 
+
+\[\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])|_{\Spec A/I}=\text{Supp}(\text{Coker}[O_{X_{A/I}} \to \mathcal{A}_0]))\]
+
+and the latter is dense when pulled back to $C_0=C \times \Spec A/I$. This implies $g_A^{-1}(U)$ is dense in the closed fiber $C_0 \subset C$ and now we must conclude that it is dense in every fiber of $C$. Let $p \subset A$ be a prime ideal, by modding out and pulling back $g_A: C \to X_A$ we may suppose that $p=(0)$ is the generic point of $A$. 
+\\
+
+If there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then the closure $\overline{\{\eta\}}$ is disjoint from $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber the closed fiber of $Y$ must have dimension $<1$. It follows that $U_0$ contains all of $Y \times_B \Spec {A/I}$ and therefore $Y \subset U_0$ because $\Spec A/I$ contains all closed points of $\Spec A$. This contradicts the fact that $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
+
 
 
 \end{document}
