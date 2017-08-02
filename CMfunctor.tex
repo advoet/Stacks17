@@ -255,13 +255,40 @@ T \ar[r]^h & B
 }
 $$
 \item $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
-\item The induced morphism $(g’) : C \to X_T$ is finite
+\item The induced morphism $(g?) : C \to X_T$ is finite
 \item There is an open $U \subset X_T$ where
 \begin{enumerate}
-\item $(g’)^{-1}(U) \to U$ is a closed immersion
-\item For every closed $t \in T$, the fiber $\left((g’)^{-1}(U)\right)_t$ is dense in $C_t$
+\item $(g?)^{-1}(U) \to U$ is a closed immersion
+\item For every $t \in T$, the fiber
+$\left((g?)^{-1}(U)\right)_t$ is dense in $C_t$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
+
+Effectiveness of formal objects:
+
+\begin{theorem} Fix a complete Noetherian local $\mathcal{O}_S$-algebra $A$ and a collection of $\Spec A/m_i$ points of $CM_{X/B}$ for all $i$ which are compatible, call it $(h_i,C_i,g_i)$. Then there exists a $\Spec A$ point of $CM_{X/B}$ which restricts to $(h_i,C_i,g_i)$. 
+\end{theorem}
+
+\begin{proof}
+
+We view the data of $(h,C, g)$ as a coherent algebra on $X_T$ by considering $(g_T)_*\mathcal{O}_{X_T}$. Conversely, given a coherent algebra $\mathcal{A}$ on $X_T$ that is $T$-flat with proper support over $T$, we take the relative spectrum of $\mathcal{A}$. Let $(h_i,C_i,g_i)$ be a compatible system of $\Spec A/m^n$ points of $CM_{X/B}$ and consider the corresponding coherent algebras $\mathcal{A}_i$ on $X_i=X \times_B  \Spec A/m^i$. 
+The underlying coherent sheaf and its algebra structure can be described by morphisms $\hat{\mathcal{A}} \otimes \hat{\mathcal{A}} \to \hat{\mathcal{A}}$ and the unit $\mathcal{O}_{\hat{X}} \to \hat{\mathcal{A}}$. That this yields an algebra structure is expressed by the commutativity of certain diagrams. By Lemma 08BE these diagrams correspond to diagrams in $Coh_{X_A/\Spec A}$. As such we obtain a coherent algebra $\mathcal{A}$ on $X_A=X \times_B \Spec A$ whose relative spectrum is a candidate for algebraizing the formal point $(h_i,C_i,g_i)$ corresponding to $(\mathcal{A}_i)$. 
+\\
+
+It remains to show that $C=\underline{\Spec}_X(\mathcal{A})$ is a $\Spec A$-point of $CM_{X/B}$. Since it arises as the relative spectrum of a coherent algebra which is $\Spec A$-flat with proper support over $\Spec A$, $C \to X_{\Spec A}$ is finite with proper support of finite presentation. Since $C_i$ is $\Spec A/m^i$-flat for each $i$ Lemma 0523 shows $C$ is $\Spec A$-flat. To verify that $g_A: C \to X_A$ is a Cohen-Maucalay morphism use the fact that the closed fiber of $C \times_B \Spec A/m \to \Spec A/m$ is a Cohen-Maucalay morphism and Lemma 045U to conclude. 
+\\
+
+It remains to show the locus where the morphism $C_T \to X_A$ is a closed immersion is dense on the fibers. Note that this locus is open as it can be identified with the complement of $\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])$ and the latter is closed because it is the support of a coherent sheaf. Since pullback is right exact and taking supports with restriction to a closed subscheme (Lemma 00L3) we obtain 
+
+\[\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])|_{\Spec A/m}=\text{Supp}(\text{Coker}[O_{X_{A/m}} \to \mathcal{A}_0]))\]
+
+and the latter is dense when pulled back to $C_0=C \times \Spec A/m$. This implies $g_A^{-1}(U)$ is dense in the closed fiber $C_0 \subset C$ and now we must conclude that it is dense in every fiber of $C$. Let $p \subset A$ be a prime ideal, by modding out and pulling back $g_A: C \to X_A$ we may suppose that $p=(0)$ is the generic point of $A$. 
+\\
+
+Suppose there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then none of its specializations lies in $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber we see that $U_0$ contains all of $Y \times_B \Spec {A/m}$ and therefore $U_0=Y$, a contradiction since $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
+
+\end{proof}
+
 
 \end{document}
