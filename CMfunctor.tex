@@ -170,6 +170,9 @@
 \newtheorem{exercise}[subsection]{Exercise}
 \newtheorem{situation}[subsection]{Situation}
 
+\DeclareMathOperator{\Spec}{Spec}
+
+\setcounter{section}{-1}
 \theoremstyle{remark}
 \newtheorem{remark}[subsection]{Remark}
 \newtheorem{remarks}[subsection]{Remarks}
@@ -201,8 +204,8 @@
 %
 % Macros for moduli stacks/spaces
 %
-\def\QCohstack{\mathcal{QC}\!{\it oh}}
-\def\Cohstack{\mathcal{C}\!{\it oh}}
+\def\QCMfunctor{\mathcal{QC}\!{\it oh}}
+\def\CMfunctor{\mathcal{C}\!{\it oh}}
 \def\Spacesstack{\mathcal{S}\!{\it paces}}
 \def\Quotfunctor{{\rm Quot}}
 \def\Hilbfunctor{{\rm Hilb}}
@@ -239,7 +242,7 @@ In this section we prove the (Honsen?) functor is an algebraic space.\\
 \begin{situation}
 \label{situation-cm}
 Let $S$ be a scheme. Let $f : X \to B$ be a morphism of algebraic spaces
-over $S$. Assume that $f$ is of separated and of finite presentation.
+over $S$. Assume that $f$ is separated and of finite presentation.
 For any scheme $T$ over $B$ we will denote $X_T$ the base change
 of $X$ to $T$. Given such a $T$ we set:
 \begin{align*}
@@ -247,29 +250,218 @@ of $X$ to $T$. Given such a $T$ we set:
 h \text{ is a morphism } h : T \to B \text{ and } g \text{ is a morphism } g : C \to X \\ & \text{satisfying the following properties}
 \end{align*}
 \begin{enumerate}
-\item The diagram below is commutative: 
+\item\label{situation-cm-diagram} The diagram below is commutative: 
 $$
 \xymatrix{
 C \ar[r]_g \ar[d] & X \ar[d] \\
 T \ar[r]^h & B
 }
 $$
-\item $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
-\item The induced morphism $(g?) : C \to X_T$ is finite
-\item There is an open $U \subset X_T$ where
+\item\label{situation-cm-morphism} $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
+\item\label{situation-cm-finite} The induced morphism $(g') : C \to X_T$ is finite
+\item\label{situation-cm-open} There is an open $U \subset X_T$ where
 \begin{enumerate}
-\item $(g?)^{-1}(U) \to U$ is a closed immersion
-\item For every $t \in T$, the fiber
-$\left((g?)^{-1}(U)\right)_t$ is dense in $C_t$
+\item $(g')^{-1}(U) \to U$ is a closed immersion
+\item For every $t \in T$, the fiber $\left((g')^{-1}(U)\right)_t$ is dense in $C_t$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
+\begin{lemma}
+	The functor $\CMfunctor$ is a sheaf.
+	\label{cm-is-sheaf}
+\end{lemma}
 
-Effectiveness of formal objects:
+\begin{remark}
+	\label{remark-cm-base-change}
+	In Situation \ref{situation-cm} the rule
+$(T, g, \mathcal{F}) \mapsto (T, g)$ defines a morphism
+$$
+\CMfunctor_{X/B} \longrightarrow B
+$$
+of sheaves
+(see Lemma \ref{lemma-coherent-stack},
+Algebraic Stacks, Section \ref{algebraic-section-split}, and
+Examples of Stacks, Section
+\ref{examples-stacks-section-stack-associated-to-sheaf}).
+Let $B' \to B$ be a morphism of
+algebraic spaces over $S$.
+Set $X' = X \times_B B'$.
+We obtain a sheaf $\CMfunctor_{X'/B'}$ on  $(\Sch/S)_{fppf}$
+associated to the base change $f' : X' \to B'$. In this situation
+the diagram
+$$
+\vcenter{
+\xymatrix{
+\CMfunctor_{X'/B'} \ar[r] \ar[d] & \CMfunctor_{X/B} \ar[d] \\
+B' \ar[r] & B
+}
+}
+$$
+is fibre product square. This trivial remark
+will occasionally be useful to change the base algebraic space.
+\end{remark}
+\begin{lemma}
+	
+	\label{lemma-sm-stack}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-cm-limits}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-cm-RS-star}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-coherent-stack}
+\end{lemma}
+\begin{lemma}
+	In Situation \ref{situation-cm}, the diagonal morphism 
+	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
+	is representable by algebraic spaces and quasicompact.
+	\label{cm-rep-diagonal}
+\end{lemma}
+\begin{proof}
+	Let $( (h_0,C_0\rightarrow T, g_0) ,( h_1, C_1\rightarrow T, g_1))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$.
+	First, observe that the pair induces an element $(C_0\rightarrow T,C_1\rightarrow T)$ in $\textit{B-curves}\times \textit{B-curves}(T)$.
+	Because $\textit{B-curves}$ is an algebraic stack, its diagonal pulled back to $T$ is an algebraic space $U$.
+
+	At this point, we have
+	\[\xymatrix{
+		C\ar[d] & \\
+		U\ar[r] & T
+	}\]
+	and two $T$-morphisms $C\xrightarrow{g_0,g_1} X$.
+	Then using the fact that $Mor(C,X)$ is an algebraic stack, the equalizer defines an algebraic space $V$ over $T$ with the property that
+	\[\xymatrix{
+		C\ar[rr]\ar[dr]\ar[dd]&&C_0\ar[dd]|!{[dl];[dr]}\hole\ar[dr]^{g_0}&\\
+		&C_1\ar[rr]^(.25){g_1}\ar[dr]& & X\ar[d]\\
+		V\ar[rr]& & T\ar[r]^{h} & B
+	}
+	\]
+	is commutative.
+
+	Because $C\cong C_0|_V$, properties (2) and (3) hold because they are stable under base change.
+	For property (4), simply pull back the open set in $C_0$ to $C$.
+	This demonstrates that $\Delta$ is representable.
+
+	Now, we note that $U\rightarrow T$ is quasicompact as it is the pullback of the diagonal of $\text{B-curves}$ to $T$ (Lemma Tag 0DSQ).
+	Next, $V\rightarrow U$ is quasicompact as it is the pullback of the diagonal of $Mor(C,X)$ to $U$ (Lemma Tag 0DPM).
+	Thus, $V\rightarrow T$ is quasicompact.
+\end{proof}
+\begin{lemma}\label{cm-fibered-in-setoids}
+Let $S$ be a scheme.
+Let $T$ a scheme over $S$.
+Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
+Then for any two elements $\gamma_1 = (h_1,C_1 \to T,g_1)$ and $\gamma_2 = (h_2,C_2 \to T,g_2)$ of $\CMfunctor_{X/B}(T)$.
+Then there is at most one isomorphism $\gamma_1 \to \gamma_2$.
+\end{lemma}
+\begin{proof}
+Let $a,b \colon \gamma_1 \to \gamma_2$ be two isomorphisms.
+Then $h_1 = h_2$ and $a,b$ correspond to isomorphisms $\bar{a},\bar{b} \colon C_1 \xrightarrow{\sim} C_2$ making the following diagram commutative:
+\[ \xymatrix{
+  C_1 \ar[r]^{g_1} \ar[d]_{\bar{a},\bar{b}} & X \ar@{=}[d] \\
+C_2 \ar[r]^{g_2} & X
+} \]
+Let $U \subset X_T$ be an open subset satisfying condition~(\ref{situation-cm-open}) from Situation~\ref{situation-cm} for $\gamma_2$.
+Let $U' = (g'_2)^{-1}(U)$ and $V' = \bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$.
+Then $g'_2|_{U'}$ is a closed immersion of algebraic spaces, hence a monomorphism (Lemma~Tag 042R).
+As $g'_2|_{U'} \circ \bar{a}|_{V'} = g'_2|_{U'} \circ \bar{b}|_{V'}$, we have $\bar{a}|_{V'} = \bar{b}|_{V'}$.
+
+On the other hand, $U' \subset C_2$ is scheme theoretically dense.
+Since $\bar{a}$ and $\bar{b}$ are isomorphisms, $\bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$ is scheme theoretically dense by Lemma~Tag 0837.
+Lemma~Tag 084N shows that $\bar{a} = \bar{b}$, and thus $a = b$.
+\end{proof}
+
+\begin{lemma}
+Let $S$ be a scheme.
+Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
+Then the functor $\CMfunctor_{X/B}$ is a sheaf for the fppf topology.
+\end{lemma}
+\begin{proof}
+Let $T$ be a scheme over $S$.
+Let $\{ T_i \to T \}_{i \in I}$ an fppf covering of $T$.
+We must prove that
+\[ \xymatrix{
+  \CMfunctor_{X/B}(T) \ar[r] & \prod\nolimits_{i\in I} \CMfunctor_{X/B}(T_i) \ar@<1ex>[r]^-{\text{pr}_0^*} \ar@<-1ex>[r]_-{\text{pr}_1^*} & \prod\nolimits_{(i_0, i_1) \in I \times I} \CMfunctor_{X/B}(T_{i_0} \times_T T_{i_1})
+} \]
+is an equalizer diagram.
+Injectivity is immediate from descent for algebraic spaces, see Lemma~Tag 0ADT, and because $X$ and $B$ are, per definition, sheaves for the fppf topology.
+
+Let us proceed to exactness in the middle.
+Suppose we are given $\gamma_i = (h_i,C_i \to T,g_i) \in \CMfunctor_{X/B}(T_i)$ such that 
+\[ \gamma_i|_{T_i \times_T T_j} = \gamma_j|_{T_i \times_T T_j} \]
+for all $i,j \in I$.
+In particular, there exist isomorphisms $\varphi_{ij} \colon C_i \times_T T_j \xrightarrow{\sim} T_i \times_T C_j$ such that $g_j|_{T_i \times_T T_j} \circ \varphi_{ij} = g_i|_{T_i \times_T T_j}$.
+By Lemma~\ref{cm-fibered-in-setoids}, $(C_i,\varphi_{ij})$ forms a descent datum for algebraic spaces relative to $\{T_i \to T\}$.
+As fppf descent data for algebraic spaces of finite type are effective, Lemma~Tag 04TR and Lemma~Tag 04U0, there is an algebraic space $C \to T$ such that $C \times_T T_i = C_i$; see also the proof of condition (3) in Lemma~Tag 0D1G.
+Further, since algebraic spaces are sheaves in the fppf topology, the morphisms $g_i \colon C_i \to X$ and $h_i \colon T_i \to B$ glue to morphisms $g \colon C \to X$ and $h \colon T \to B$, respectively.
+
+Set $\gamma = (h,C\to T,g)$.
+It remains to show that $\gamma \in \CMfunctor_{X/B}(T)$.
+Property~(\ref{situation-cm-diagram}) holds because commutativity of the diagram can be checked fppf locally on $C$.
+
+The morphism $C \to T$ is of relative dimension $1$, flat, proper, and of finite presentation by Lemma~Tag 02VJ, Lemma~Tag 02L2, Lemma~Tag 02L1, and Lemma~Tag 02L0.
+Moreover, for a flat morphism, being Cohen-Macaulay can be checked on fibers, see Lemma~Tag 0E0W. That establishes property~(\ref{situation-cm-morphism}).
+
+For property~(\ref{situation-cm-finite}), the finiteness of $(g') \colon C \to X_T$ can again be seen fppf locally on $X_T$ from the finiteness of the $(g')|_{T_i} = (g'_i) \colon C_i \to X_{T_i}$ by Lemma~Tag 02LA.
+
+Finally, let $U = X_T \setminus (\text{Supp}\Coker(\mathcal{O}_{X_T} \to (g')_*\mathcal{O}_C))$.
+This is the largest open subset for which $(g')^{-1}(U) \to U$ is an closed immersion.
+For $t \in T$, choose $i \in I$ such that $t \in \Im(T_i \to T)$.
+Let $\tilde{t} \in T_i$ be a point mapping to $t$.
+Then $((g')^{-1}(U))_t = ((g'_i)^{-1}(U))_{\tilde{t}}$ is dense in $C_t = (C_{i})_{\tilde{t}}$, yielding property~(\ref{situation-cm-open}).
+\end{proof}
+
+\begin{lemma}
+	For every field $k$ and every $x_0\in \CMfunctor_{X/B}(k)$, $T_{k,x_0}\CMfunctor_{X/B}$ is finite-dimensional.
+	\label{lemma-cm-tangent-space}
+\end{lemma}
+\begin{proof}
+	First, we may assume that $S=B$.
+
+	An element in $ T_{k,x_0}\CMfunctor_{X/S}$ is simply an element
+	\[(h',C'\rightarrow \Spec(k[\epsilon]),g')\in \CMfunctor_{X/S}(\Spec(k[\epsilon]))\]
+	which restricts to $x_0$ under 
+	\[\CMfunctor_{X/S}(\Spec(k[\epsilon]))\rightarrow\CMfunctor_{X/S}(\Spec(k)).\]
+	Note that $h'$ is $h$ composed with the natural morphism $\Spec(k[\epsilon])\rightarrow\Spec(k)$ because we are working with $S$-schemes.
+
+	Observe that there is an obvious forgetful morphism
+	\[\CMfunctor_{X/S}\rightarrow Spaces'_{fp,flat,proper}\]
+	which sends $(h,C\rightarrow T,g)$ to $C$.
+
+	This induces a morphism of tangent spaces which sends $(C',g')$ to $C'$.
+
+	Clearly, a tangent vector is in the kernel of this morphism if and only if $C'\cong C\times_{\Spec(k)} \Spec(k[\epsilon])$.
+	
+	Recall that $Mor(C,X_k)$ associates to a test scheme $T\rightarrow S$ the set of morphisms $C_T\rightarrow X_k|_T$.
+	The tangent space at $g$ is the set of commutative diagrams
+	\[\xymatrix{
+		&C\ar[rr]^{g}\ar[dr]|!{[d];[rr]}\hole\ar[dl] & & X_k\ar[dll]\ar[dl]\\
+		C\times_{\Spec(k)}\Spec(k[\epsilon])\ar[r]\ar[dr]&X_k\times_{\Spec(k)}\Spec(k[\epsilon])\ar[d]& \Spec(k)\ar[dl]\ar[d] & \\
+		&\Spec(k[\epsilon])\ar[r] & S&
+	}\]
+	Clearly, a morphism $C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X_k$ extending $g$ can be composed with the natural map $X_k\rightarrow X_k\times_{\Spec(k)}\Spec(k[\epsilon])$ to uniquely produce such a diagram.
+
+	This implies that $g':C\times_{\Spec(k)}\Spec(k[\epsilon])\rightarrow X_k$ induces a tangent vector in $T_gMor(C,X_k)$.
+
+	Thus, the kernel of
+	\[T_{k,x_0}\CMfunctor_{X/S}\rightarrow T_{C}Spaces'_{fp,flat,proper}\]
+	is included in the finite-dimensional tangent space $T_gMor(C,X_k)$.
+
+	Altogether, we conclude that $T_{k,x_0}\CMfunctor_{X/S}$ is finite-dimensional, as claimed.
+	\end{proof}
+	\begin{remark}
+		Strictly speaking, in the proof of Lemma \ref{lemma-cm-tangent-space}, we describe a vector space which merely contains $T_{k,x_0}\CMfunctor_{X/S}$--we have ignored data like the generic embedding condition.
+		This is adequate however, because our goal is merely to demonstrate that the actual tangent space is finite-dimensional.
+	\end{remark}
 \\
 
-\begin{theorem} Fix a complete Noetherian local $\mathcal{O}_S$-algebra $A$ and a collection of $\Spec A/m_i$ points of $CM_{X/B}$ for all $i$ which are compatible, call it $(h_i,C_i,g_i)$. Then there exists a $\Spec A$ point of $CM_{X/B}$ which restricts to $(h_i,C_i,g_i)$. 
-\end{theorem}
+\begin{lemma}
+	\label{lemma-cm-existence}
+	Fix a complete Noetherian local $\mathcal{O}_S$-algebra $A$ and a collection of $\Spec A/m_i$ points of $CM_{X/B}$ for all $i$ which are compatible, call it $(h_i,C_i,g_i)$. Then there exists a $\Spec A$ point of $CM_{X/B}$ which restricts to $(h_i,C_i,g_i)$. 
+\end{lemma}
 
 \begin{proof}
 
@@ -293,13 +485,13 @@ If there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(
 
 \end{proof}
 
-Strong Effectiveness
 
 Let $(A_n)$ be a inverse system of rings with surjective transition maps which have locally nilpotent kernels. Take $A=\lim A_n$, to show the strong form of formal effectiveness we prove that if $CM_{X/B}$ admits a compatible system of $\Spec A_n$-points, $\zeta_n \in CM_{X/B}(\Spec A_n)$, then it admits a $\Spec A$-point $\zeta \in CM_{X/B}(\Spec A)$ which extends the $(\zeta_n)$. 
 
-\begin{theorem} Let $A=\lim A_n$ and $(\zeta_n)$ be as above. Then there exists a $\zeta \in CM_{X/B}(\Spec A)$ which extends the $(\zeta_n)$. 
-\end{theorem}
-
+\begin{lemma}[Strong Effectiveness] Let $A=\lim A_n$ and $(\zeta_n)$ be as above. Then there exists a $\zeta \in CM_{X/B}(\Spec A)$ which extends the $(\zeta_n)$. 
+	\label{lemma-cm-strong-effectiveness}
+\end{lemma}
+\begin{proof}
 We view the data of $(h,C, g) \in CM_{X/B}(T)$ as a quasicoherent algebra of finite presentation (as a $\mathcal{O}_T$-module) on $X_T$ by considering $(g_T)_*\mathcal{O}_{X_T}$. Conversely, given a quasicoherent algebra of finite presentation $\mathcal{A}$ on $X_T$ that is $T$-flat with proper support over $T$, we take the relative spectrum of $\mathcal{A}$. Let $(h_i,C_i,g_i)$ be a compatible system of $\Spec A_n$ points of $CM_{X/B}$ and consider the corresponding quasicoherent algebras $\mathcal{A}_i$ on $X_i=X \times_B  \Spec A_i$.
 \\
 
@@ -332,7 +524,101 @@ and the latter is dense when pulled back to $C_0=C \times \Spec A/I$. This impli
 \\
 
 If there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then the closure $\overline{\{\eta\}}$ is disjoint from $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber the closed fiber of $Y$ must have dimension $<1$. It follows that $U_0$ contains all of $Y \times_B \Spec {A/I}$ and therefore $Y \subset U_0$ because $\Spec A/I$ contains all closed points of $\Spec A$. This contradicts the fact that $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
+\end{proof}
 
+\begin{theorem}[Algebraicity of $\CMfunctor$]
+\label{theorem-cm-general}
+Let $S$ be a scheme. Let $f : X \to B$ be morphism of algebraic spaces
+over $S$. Assume that $f$ is of finite presentation and separated. Then
+$\CMfunctor_{X/B}$ is an algebraic space over $S$.
+\end{theorem}
 
+\begin{proof}
+Set $\mathcal{X} = \CMfunctor_{X/B}$. We have seen that $\mathcal{X}$
+is a sheaf over $(\Sch/S)_{fppf}$ with diagonal representable
+by algebraic spaces
+(Lemmas \ref{cm-rep-diagonal} and \ref{cm-is-sheaf}).
+Hence it suffices to find a scheme $W$ and a surjective and \'etale
+morphism $W \to \mathcal{X}$.
 
+\medskip\noindent
+Let $B'$ be a scheme and let $B' \to B$ be a surjective \'etale morphism.
+Set $X' = B' \times_B X$ and denote $f' : X' \to B'$ the projection.
+Then $\mathcal{X}' = \CMfunctor_{X'/B'}$ is equal to the fibre
+product of $\mathcal{X}$ with $B'$ and $\mathcal{X}'\rightarrow\mathcal{X}$ is representable
+(Remark \ref{remark-cm-base-change}). 
+Moreover, because the morphism $\mathcal{X}' \to \mathcal{X}$ is the base change of a surjective and \'etale morphism, it too is surjective and \'etale.
+Hence it suffices to prove the result for $\mathcal{X}'$.
+In other words, we may assume $B$ is a scheme.
+
+\medskip\noindent
+Assume $B$ is a scheme. In this case we may replace $S$ by $B$, see
+Algebraic Spaces, Section Tag 03I3.
+Thus we may assume $S = B$.
+
+\medskip\noindent
+Assume $S = B$.
+By Bootstrap, Lemma Tag 04SK, we may assume that $B$ is affine.
+
+\medskip\noindent
+Assume $S = B$ is affine, say $S = \Spec(\Lambda)$.
+Write $\Lambda = \colim \Lambda_i$ as a filtered colimit with each $\Lambda_i$
+of finite type over $\mathbf{Z}$. For some $i$ we can find
+a morphism of algebraic spaces $X_i \to \Spec(\Lambda_i)$
+which is separated and of finite presentation and whose base change
+to $\Lambda$ is $X$. See Limits of Spaces, Lemmas
+\ref{spaces-limits-lemma-descend-finite-presentation} and
+\ref{spaces-limits-lemma-descend-separated-morphism}.
+If we show that $\CMfunctor_{X_i/\Spec(\Lambda_i)}$ is an
+algebraic space, then it follows by base change
+(Remark \ref{remark-cm-base-change} and Section Tag 03I3)
+that $\mathcal{X}$ is an algebraic space.
+Thus we may assume that $\Lambda$ is a finite type $\mathbf{Z}$-algebra.
+
+\medskip\noindent
+Assume $S = B = \Spec(\Lambda)$ is affine of finite type over $\mathbf{Z}$.
+In this case we will verify conditions (1), (2), and (3) of 
+Proposition Tag 07Y1
+to conclude that $\mathcal{X}$ is an algebraic space.
+
+\medskip\noindent
+Lemma \ref{cm-rep-diagonal} provides (1).
+
+\medskip\noindent
+To check (2) we have to verify axioms [-1], [0], [1], [2], [3], [4], and [5]
+of Artin's Axioms, Section \ref{artin-section-axioms}.
+We omit the verification of [-1] and axioms
+[0], [1], [2], [3] correspond respectively to
+Lemmas \ref{lemma-sm-stack},
+\ref{lemma-cm-limits},
+\ref{lemma-cm-RS-star},
+\ref{lemma-cm-tangent-space}.
+Condition (3) is Lemma \ref{lemma-cm-existence}.
+
+\medskip\noindent
+It remains to show condition [5] which is openness of versality.
+To see this we will use
+Artin's Axioms, Lemma \ref{artin-lemma-SGE-implies-openness-versality}.
+We have already seen that $\mathcal{X}$ has diagonal
+representable by algebraic spaces, has (RS*), and is limit preserving
+(see lemmas used above).
+Hence we only need to see that $\mathcal{X}$ satisfies the strong
+formal effectiveness formulated in
+Artin's Axioms, Lemma \ref{artin-lemma-SGE-implies-openness-versality}.
+This is lemma \ref{lemma-cm-strong-effectiveness}.
+
+\medskip\noindent
+Note that $\Lambda$ is a G-ring, see
+More on Algebra, Proposition \ref{more-algebra-proposition-ubiquity-G-ring}.
+Hence all local rings of $S$ are G-rings. Thus (3) holds and the proof is complete.
+\end{proof}
+\begin{lemma}
+	In Situation \ref{section-cm}, the diagonal
+	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
+	is quasi-compact.
+\end{lemma}
+\begin{proof}
+	
+\end{proof}
 \end{document}
+
