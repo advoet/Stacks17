@@ -170,9 +170,6 @@
 \newtheorem{exercise}[subsection]{Exercise}
 \newtheorem{situation}[subsection]{Situation}
 
-\DeclareMathOperator{\Spec}{Spec}
-
-\setcounter{section}{-1}
 \theoremstyle{remark}
 \newtheorem{remark}[subsection]{Remark}
 \newtheorem{remarks}[subsection]{Remarks}
@@ -242,7 +239,7 @@ In this section we prove the (Honsen?) functor is an algebraic space.\\
 \begin{situation}
 \label{situation-cm}
 Let $S$ be a scheme. Let $f : X \to B$ be a morphism of algebraic spaces
-over $S$. Assume that $f$ is separated and of finite presentation.
+over $S$. Assume that $f$ is of separated and of finite presentation.
 For any scheme $T$ over $B$ we will denote $X_T$ the base change
 of $X$ to $T$. Given such a $T$ we set:
 \begin{align*}
@@ -250,113 +247,47 @@ of $X$ to $T$. Given such a $T$ we set:
 h \text{ is a morphism } h : T \to B \text{ and } g \text{ is a morphism } g : C \to X \\ & \text{satisfying the following properties}
 \end{align*}
 \begin{enumerate}
-\item\label{situation-cm-diagram} The diagram below is commutative: 
+\item The diagram below is commutative: 
 $$
 \xymatrix{
 C \ar[r]_g \ar[d] & X \ar[d] \\
 T \ar[r]^h & B
 }
 $$
-\item\label{situation-cm-morphism} $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
-\item\label{situation-cm-finite} The induced morphism $(g') : C \to X_T$ is finite
-\item\label{situation-cm-open} There is an open $U \subset X_T$ where
+\item $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
+\item The induced morphism $(g?) : C \to X_T$ is finite
+\item There is an open $U \subset X_T$ where
 \begin{enumerate}
-\item $(g')^{-1}(U) \to U$ is a closed immersion
-\item For every $t \in T$, the fiber $\left((g')^{-1}(U)\right)_t$ is dense in $C_t$
+\item $(g?)^{-1}(U) \to U$ is a closed immersion
+\item For every $t \in T$, the fiber
+$\left((g?)^{-1}(U)\right)_t$ is dense in $C_t$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
-\begin{lemma}
-	In Situation \ref{situation-cm}, the diagonal morphism 
-	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
-	is representable by schemes.
-	\label{cm-rep-diagonal}
-\end{lemma}
+
+Effectiveness of formal objects:
+
+\begin{theorem} Fix a complete Noetherian local $\mathcal{O}_S$-algebra $A$ and a collection of $\Spec A/m_i$ points of $CM_{X/B}$ for all $i$ which are compatible, call it $(h_i,C_i,g_i)$. Then there exists a $\Spec A$ point of $CM_{X/B}$ which restricts to $(h_i,C_i,g_i)$. 
+\end{theorem}
+
 \begin{proof}
-	Let $( (h_0,C_0\rightarrow T, g_0) ,( h_1, C_1\rightarrow T, g_1))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$.
-	First, observe that the pair induces an element $(C_0\rightarrow T,C_1\rightarrow T)$ in $\textit{B-curves}\times \textit{B-curves}(T)$.
-	Because $\textit{B-curves}$ is an algebraic stack, its diagonal pulled back to $T$ is an algebraic space $U$.
 
-	At this point, we have
-	\[\xymatrix{
-		C\ar[d] & \\
-		U\ar[r] & T
-	}\]
-	and two $T$-morphisms $C\xrightarrow{g_0,g_1} X$.
-	Then using the fact that $Mor(C,X)$ is an algebraic stack, the equalizer defines an algebraic space $V$ over $T$ with the property that
-	\[\xymatrix{
-		C\ar[rr]\ar[dr]\ar[dd]&&C_0\ar[dd]|!{[dl];[dr]}\hole\ar[dr]^{g_0}&\\
-		&C_1\ar[rr]^(.25){g_1}\ar[dr]& & X\ar[d]\\
-		V\ar[rr]& & T\ar[r]^{h} & B
-	}
-	\]
-	is commutative.
+We view the data of $(h,C, g)$ as a coherent algebra on $X_T$ by considering $(g_T)_*\mathcal{O}_{X_T}$. Conversely, given a coherent algebra $\mathcal{A}$ on $X_T$ that is $T$-flat with proper support over $T$, we take the relative spectrum of $\mathcal{A}$. Let $(h_i,C_i,g_i)$ be a compatible system of $\Spec A/m^n$ points of $CM_{X/B}$ and consider the corresponding coherent algebras $\mathcal{A}_i$ on $X_i=X \times_B  \Spec A/m^i$. 
+The underlying coherent sheaf and its algebra structure can be described by morphisms $\hat{\mathcal{A}} \otimes \hat{\mathcal{A}} \to \hat{\mathcal{A}}$ and the unit $\mathcal{O}_{\hat{X}} \to \hat{\mathcal{A}}$. That this yields an algebra structure is expressed by the commutativity of certain diagrams. By Lemma 08BE these diagrams correspond to diagrams in $Coh_{X_A/\Spec A}$. As such we obtain a coherent algebra $\mathcal{A}$ on $X_A=X \times_B \Spec A$ whose relative spectrum is a candidate for algebraizing the formal point $(h_i,C_i,g_i)$ corresponding to $(\mathcal{A}_i)$. 
+\\
 
-	Because $C\cong C_0|_V$, properties (2) and (3) hold because they are stable under base change.
-	For property (4), simply pull back the open set in $C_0$ to $C$.
-\end{proof}
-\begin{lemma}\label{cm-fibered-in-setoids}
-Let $S$ be a scheme.
-Let $T$ a scheme over $S$.
-Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
-Then for any two elements $\gamma_1 = (h_1,C_1 \to T,g_1)$ and $\gamma_2 = (h_2,C_2 \to T,g_2)$ of $\CMfunctor_{X/B}(T)$.
-Then there is at most one isomorphism $\gamma_1 \to \gamma_2$.
-\end{lemma}
-\begin{proof}
-Let $a,b \colon \gamma_1 \to \gamma_2$ be two isomorphisms.
-Then $h_1 = h_2$ and $a,b$ correspond to isomorphisms $\bar{a},\bar{b} \colon C_1 \xrightarrow{\sim} C_2$ making the following diagram commutative:
-\[ \xymatrix{
-  C_1 \ar[r]^{g_1} \ar[d]_{\bar{a},\bar{b}} & X \ar@{=}[d] \\
-C_2 \ar[r]^{g_2} & X
-} \]
-Let $U \subset X_T$ be an open subset satisfying condition~(\ref{situation-cm-open}) from Situation~\ref{situation-cm} for $\gamma_2$.
-Let $U' = (g'_2)^{-1}(U)$ and $V' = \bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$.
-Then $g'_2|_{U'}$ is a closed immersion of algebraic spaces, hence a monomorphism (Lemma~Tag 042R).
-As $g'_2|_{U'} \circ \bar{a}|_{V'} = g'_2|_{U'} \circ \bar{b}|_{V'}$, we have $\bar{a}|_{V'} = \bar{b}|_{V'}$.
+It remains to show that $C=\underline{\Spec}_X(\mathcal{A})$ is a $\Spec A$-point of $CM_{X/B}$. Since it arises as the relative spectrum of a coherent algebra which is $\Spec A$-flat with proper support over $\Spec A$, $C \to X_{\Spec A}$ is finite with proper support of finite presentation. Since $C_i$ is $\Spec A/m^i$-flat for each $i$ Lemma 0523 shows $C$ is $\Spec A$-flat. To verify that $g_A: C \to X_A$ is a Cohen-Maucalay morphism use the fact that the closed fiber of $C \times_B \Spec A/m \to \Spec A/m$ is a Cohen-Maucalay morphism and Lemma 045U to conclude. 
+\\
 
-On the other hand, $U' \subset C_2$ is scheme theoretically dense.
-Since $\bar{a}$ and $\bar{b}$ are isomorphisms, $\bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$ is scheme theoretically dense by Lemma~Tag 0837.
-Lemma~Tag 084N shows that $\bar{a} = \bar{b}$, and thus $a = b$.
-\end{proof}
+It remains to show the locus where the morphism $C_T \to X_A$ is a closed immersion is dense on the fibers. Note that this locus is open as it can be identified with the complement of $\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])$ and the latter is closed because it is the support of a coherent sheaf. Since pullback is right exact and taking supports with restriction to a closed subscheme (Lemma 00L3) we obtain 
 
-\begin{lemma}
-Let $S$ be a scheme.
-Let $f \colon X \to B$ be a separated and finitely presented morphism of algebraic spaces over $S$.
-Then the functor $\CMfunctor_{X/B}$ is a sheaf for the fppf topology.
-\end{lemma}
-\begin{proof}
-Let $T$ be a scheme over $S$.
-Let $\{ T_i \to T \}_{i \in I}$ an fppf covering of $T$.
-We must prove that
-\[ \xymatrix{
-  \CMfunctor_{X/B}(T) \ar[r] & \prod\nolimits_{i\in I} \CMfunctor_{X/B}(T_i) \ar@<1ex>[r]^-{\text{pr}_0^*} \ar@<-1ex>[r]_-{\text{pr}_1^*} & \prod\nolimits_{(i_0, i_1) \in I \times I} \CMfunctor_{X/B}(T_{i_0} \times_T T_{i_1})
-} \]
-is an equalizer diagram.
-Injectivity is immediate from descent for algebraic spaces, see Lemma~Tag 0ADT, and because $X$ and $B$ are, per definition, sheaves for the fppf topology.
+\[\text{Supp}(\text{Coker}[O_{X_A} \to \mathcal{A}])|_{\Spec A/m}=\text{Supp}(\text{Coker}[O_{X_{A/m}} \to \mathcal{A}_0]))\]
 
-Let us proceed to exactness in the middle.
-Suppose we are given $\gamma_i = (h_i,C_i \to T,g_i) \in \CMfunctor_{X/B}(T_i)$ such that 
-\[ \gamma_i|_{T_i \times_T T_j} = \gamma_j|_{T_i \times_T T_j} \]
-for all $i,j \in I$.
-In particular, there exist isomorphisms $\varphi_{ij} \colon C_i \times_T T_j \xrightarrow{\sim} T_i \times_T C_j$ such that $g_j|_{T_i \times_T T_j} \circ \varphi_{ij} = g_i|_{T_i \times_T T_j}$.
-By Lemma~\ref{cm-fibered-in-setoids}, $(C_i,\varphi_{ij})$ forms a descent datum for algebraic spaces relative to $\{T_i \to T\}$.
-As fppf descent data for algebraic spaces of finite type are effective, Lemma~Tag 04TR and Lemma~Tag 04U0, there is an algebraic space $C \to T$ such that $C \times_T T_i = C_i$; see also the proof of condition (3) in Lemma~Tag 0D1G.
-Further, since algebraic spaces are sheaves in the fppf topology, the morphisms $g_i \colon C_i \to X$ and $h_i \colon T_i \to B$ glue to morphisms $g \colon C \to X$ and $h \colon T \to B$, respectively.
+and the latter is dense when pulled back to $C_0=C \times \Spec A/m$. This implies $g_A^{-1}(U)$ is dense in the closed fiber $C_0 \subset C$ and now we must conclude that it is dense in every fiber of $C$. Let $p \subset A$ be a prime ideal, by modding out and pulling back $g_A: C \to X_A$ we may suppose that $p=(0)$ is the generic point of $A$. 
+\\
 
-Set $\gamma = (h,C\to T,g)$.
-It remains to show that $\gamma \in \CMfunctor_{X/B}(T)$.
-Property~(\ref{situation-cm-diagram}) holds because commutativity of the diagram can be checked fppf locally on $C$.
+Suppose there is a generic point of the generic fiber $\eta \in C \times_B \Spec A_{(0)}$ not in $g_A^{-1}(U)$ then none of its specializations lies in $g_A^{-1}(U)$. Consider the composition $Y=\overline{\{\eta\}} \subset X_A \to \Spec A$ where $Y$ has the reduced induced structure. Then by Lemma 02FZ the set $U_0=\{y \in Y|\dim_y Y_{f(y)} = 0 \}$ is open in $Y$. Since $g_A^{-1}(U)$ contains all generic points of the closed fiber we see that $U_0$ contains all of $Y \times_B \Spec {A/m}$ and therefore $U_0=Y$, a contradiction since $C \to \Spec A$ is a relative curve. It follows that $g_A^{-1}(U)$ contains all the generic points of the generic fiber, as desired. It follows that the resulting $g_A: C \to X_A$ is a $A$-point of $CM_{X/B}$ which algebraizes $(h_i,C_i,g_i)$. 
 
-The morphism $C \to T$ is of relative dimension $1$, flat, proper, and of finite presentation by Lemma~Tag 02VJ, Lemma~Tag 02L2, Lemma~Tag 02L1, and Lemma~Tag 02L0.
-Moreover, for a flat morphism, being Cohen-Macaulay can be checked on fibers, see Lemma~Tag 0E0W. That establishes property~(\ref{situation-cm-morphism}).
-
-For property~(\ref{situation-cm-finite}), the finiteness of $(g') \colon C \to X_T$ can again be seen fppf locally on $X_T$ from the finiteness of the $(g')|_{T_i} = (g'_i) \colon C_i \to X_{T_i}$ by Lemma~Tag 02LA.
-
-Finally, let $U = X_T \setminus (\text{Supp}\Coker(\mathcal{O}_{X_T} \to (g')_*\mathcal{O}_C))$.
-This is the largest open subset for which $(g')^{-1}(U) \to U$ is an open immersion.
-For $t \in T$, choose $i \in I$ such that $t \in \Im(T_i \to T)$.
-Let $\tilde{t} \in T_i$ be a point mapping to $t$.
-Then $((g')^{-1}(U))_t = ((g'_i)^{-1}(U))_{\tilde{t}}$ is dense in $C_t = (C_{i})_{\tilde{t}}$, yielding property~(\ref{situation-cm-open}).
 \end{proof}
 
 \begin{lemma}
@@ -428,4 +359,4 @@ Suppose there is a generic point of the generic fiber $\eta \in C \times_B \Spec
 
 
 \end{document}
->>>>>>> sid
+
