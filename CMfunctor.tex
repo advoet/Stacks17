@@ -300,11 +300,26 @@ $$
 is fibre product square. This trivial remark
 will occasionally be useful to change the base algebraic space.
 \end{remark}
-
+\begin{lemma}
+	
+	\label{lemma-sm-stack}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-cm-limits}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-cm-RS-star}
+\end{lemma}
+\begin{lemma}
+	
+	\label{lemma-coherent-stack}
+\end{lemma}
 \begin{lemma}
 	In Situation \ref{situation-cm}, the diagonal morphism 
 	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
-	is representable by schemes.
+	is representable by algebraic spaces and quasicompact.
 	\label{cm-rep-diagonal}
 \end{lemma}
 \begin{proof}
@@ -329,8 +344,12 @@ will occasionally be useful to change the base algebraic space.
 
 	Because $C\cong C_0|_V$, properties (2) and (3) hold because they are stable under base change.
 	For property (4), simply pull back the open set in $C_0$ to $C$.
-\end{proof}
+	This demonstrates that $\Delta$ is representable.
 
+	Now, we note that $U\rightarrow T$ is quasicompact as it is the pullback of the diagonal of $\text{B-curves}$ to $T$ (Lemma Tag 0DSQ).
+	Next, $V\rightarrow U$ is quasicompact as it is the pullback of the diagonal of $Mor(C,X)$ to $U$ (Lemma Tag 0DPM).
+	Thus, $V\rightarrow T$ is quasicompact.
+\end{proof}
 \begin{lemma}\label{cm-fibered-in-setoids}
 Let $S$ be a scheme.
 Let $T$ a scheme over $S$.
@@ -434,7 +453,7 @@ Then $((g')^{-1}(U))_t = ((g'_i)^{-1}(U))_{\tilde{t}}$ is dense in $C_t = (C_{i}
 	Altogether, we conclude that $T_{k,x_0}\CMfunctor_{X/S}$ is finite-dimensional, as claimed.
 	\end{proof}
 	\begin{remark}
-		Strictly speaking, in the proof of Lemma \ref{lem:axiom3}, we describe a vector space which merely contains $T_{k,x_0}\CMfunctor_{X/S}$--we have ignored data like the generic embedding condition.
+		Strictly speaking, in the proof of Lemma \ref{lemma-cm-tangent-space}, we describe a vector space which merely contains $T_{k,x_0}\CMfunctor_{X/S}$--we have ignored data like the generic embedding condition.
 		This is adequate however, because our goal is merely to demonstrate that the actual tangent space is finite-dimensional.
 	\end{remark}
 Effectiveness of formal objects:
@@ -491,12 +510,12 @@ In other words, we may assume $B$ is a scheme.
 
 \medskip\noindent
 Assume $B$ is a scheme. In this case we may replace $S$ by $B$, see
-Algebraic Spaces, Section \ref{Tag 03I3}.
+Algebraic Spaces, Section Tag 03I3.
 Thus we may assume $S = B$.
 
 \medskip\noindent
 Assume $S = B$.
-By Bootstrap, Lemma \ref{Tag 04SK}, we may assume that $B$ is affine.
+By Bootstrap, Lemma Tag 04SK, we may assume that $B$ is affine.
 
 \medskip\noindent
 Assume $S = B$ is affine, say $S = \Spec(\Lambda)$.
@@ -509,14 +528,14 @@ to $\Lambda$ is $X$. See Limits of Spaces, Lemmas
 \ref{spaces-limits-lemma-descend-separated-morphism}.
 If we show that $\CMfunctor_{X_i/\Spec(\Lambda_i)}$ is an
 algebraic space, then it follows by base change
-(Remark \ref{remark-cm-base-change} and Section \ref{Tag 03I3})
+(Remark \ref{remark-cm-base-change} and Section Tag 03I3)
 that $\mathcal{X}$ is an algebraic space.
 Thus we may assume that $\Lambda$ is a finite type $\mathbf{Z}$-algebra.
 
 \medskip\noindent
 Assume $S = B = \Spec(\Lambda)$ is affine of finite type over $\mathbf{Z}$.
 In this case we will verify conditions (1), (2), and (3) of 
-Proposition \ref{07Y1}
+Proposition Tag 07Y1
 to conclude that $\mathcal{X}$ is an algebraic space.
 
 \medskip\noindent
@@ -549,6 +568,14 @@ This is Flatness on Spaces, Theorem \ref{spaces-flat-theorem-existence}.
 Note that $\Lambda$ is a G-ring, see
 More on Algebra, Proposition \ref{more-algebra-proposition-ubiquity-G-ring}.
 Hence all local rings of $S$ are G-rings. Thus (3) holds and the proof is complete.
+\end{proof}
+\begin{lemma}
+	In Situation \ref{section-cm}, the diagonal
+	\[\Delta:\CMfunctor_{X/B}\rightarrow\CMfunctor_{X/B}\times\CMfunctor_{X/B}\]
+	is quasi-compact.
+\end{lemma}
+\begin{proof}
+	
 \end{proof}
 \end{document}
 
