@@ -403,9 +403,39 @@ will occasionally be useful to change the base algebraic space.
 	\label{lemma-sm-stack}
 \end{lemma}
 \begin{lemma}
-	
+    In Situation~\ref{situation-cm}, $\CMfunctor_{X/B}$ is limit-preserving.
 	\label{lemma-cm-limits}
 \end{lemma}
+\begin{proof}
+Let $T = \lim_{i \in I} T_i$ be a directed limit of affine $B$-schemes. We need to show that
+$$
+\CMfunctor_{X/B}(T) = \colim_{i \in I} \CMfunctor_{X/B}(T_i)
+$$
+Using Tag~0D1I (limit preservation for the stack of spaces), this reduces to the following assertion. For any $0 \in I$ and a commutative diagram
+$$
+\xymatrix{
+C_0 \ar[r]^{g_0} \ar[d] &X \ar[d] \\
+T_0 \ar[r]^{h_0} & B
+}
+$$
+    denote the base change to $T_i$ with $i \geq 0$ by $(h_i,C_i \rightarrow T_i,g_i)$, and the base change to $T$ by $(h,C \rightarrow T,g)$. We need to show that if $(h,C \rightarrow T,g) \in \CMfunctor_{X/B}(T)$, then there exists an $i \geq 0$ with $(h_i, C_i \rightarrow T_i, g_i) \in \CMfunctor_{X/B}(T_i)$. From Tag~084Z (finiteness behaves nicely w.r.t.\ limits) and Tag~01EF (stack of relative dimension 1 CM curves is algebraic), we find an $i \geq 0$ so that~\eqref{situation-cm-morphism} and~\eqref{situation-cm-finite} hold.
+
+\medskip\noindent
+We still need to show the existence of an $i \geq 0$ for which the set
+$$
+U_i = X_{T_i} \setminus \text{Supp}(\Coker(\mathcal{O}_{X_{T_i}} \rightarrow g'_{i,*} \mathcal{O}_{C_i}))
+$$
+has fiberwise dense preimage in $C_i$. Since $C_i \rightarrow T_i$ has relative dimension $1$, this is equivalent to requiring that $C_i \setminus (g_i')^{-1} (U_i)$ has relative dimension $0$ over $T_i$. After showing that the $U_i$ are stable under taking preimages, this follows from Tag~0D4K (relative dimension behaves nicely w.r.t.\ limits). \\
+The stability of the $U_i$ under taking preimages boils down to the following. Given cartesian squares
+$$
+\xymatrix{
+C_0 \ar[r]^{g_0} \ar[d]^{g_0'} &C_1 \ar[d]^{g_1'} \\
+X_{T_0} \ar[d] \ar[r]^{b} & X_{T_1} \ar[d] \\
+T_0 \ar[r] &T_1
+}
+$$
+with $g'_1$ finite, the preimage of $(g'_1)^{-1} \text{Supp}( \Coker(\mathcal{O}_{X_{T_1}} \rightarrow g'_{1,*} \mathcal{O}_{C_1}))$ under $b$ is equal to $(g'_0)^{-1} \text{Supp}( \Coker(\mathcal{O}_{X_{T_0}} \rightarrow g'_{0,*} \mathcal{O}_{C_0}))$. This follows from Tag~07U8 (base change for affine morphisms) and Tag~056J (preimage of support of finite-type quasi-coherent sheaf), which applies because the finiteness of $g_1'$ implies that $g_{1,*}' \mathcal{O}_{C_1}$ is finite-type quasi-coherent {\bfseries Reference?}.
+\end{proof}
 
 
 \begin{lemma}
