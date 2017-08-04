@@ -233,18 +233,17 @@
 \maketitle
 
 
-\section{The (Honsen?) functor}
+\section{The Honsen functor}
 \label{section-cm}
 
 \noindent
-In this section we prove the (Honsen?) functor is an algebraic space.\\
+In this section we prove the Honsen functor is an algebraic space.\\
 
 \begin{situation}
 \label{situation-cm}
 Let $S$ be a scheme. Let $f : X \to B$ be a morphism of algebraic spaces
 over $S$. Assume that $f$ is separated and of finite presentation.
-For any scheme $T$ over $B$ we will denote $X_T$ the base change
-of $X$ to $T$. Given such a $T$ we set:
+For any scheme $T$ over $S$ we will denote $X_T=T\times_B X$. Given such a $T$, we set:
 \begin{align*}
 \CMfunctor_{X/B}(T) = & (h, C \to T, g)  \text{ where } 
 h \text{ is a morphism } h : T \to B \text{ and } g \text{ is a morphism } g : C \to X \\ & \text{satisfying the following properties}
@@ -258,7 +257,7 @@ T \ar[r]^h & B
 }
 $$
 \item\label{situation-cm-morphism} $C$ is an algebraic space and $C \to T$ is a Cohen-Macauley morphism of relative dimension 1 which is flat, proper, and of finite presentation.
-\item\label{situation-cm-finite} The induced morphism $(g') : C \to X_T$ is finite
+\item\label{situation-cm-finite} The induced morphism $g' : C \to X_T$ is finite
 \item\label{situation-cm-open} There is an open $U \subset X_T$ where
 \begin{enumerate}
 \item $(g')^{-1}(U) \to U$ is a closed immersion
@@ -266,6 +265,15 @@ $$
 \end{enumerate}
 \end{enumerate}
 \end{situation}
+
+\begin{remark}\label{cm-functor}
+\end{remark}
+
+\begin{remark}\label{cm-base-change}
+\end{remark}
+
+\begin{lemma}\label{cm-dense-fibers}
+\end{lemma}
 
 \begin{lemma}\label{cm-fibered-in-setoids}
 Let $S$ be a scheme.
@@ -286,7 +294,7 @@ Let $U' = (g'_2)^{-1}(U)$ and $V' = \bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subs
 Then $g'_2|_{U'}$ is a closed immersion of algebraic spaces, hence a monomorphism (Lemma~Tag 042R).
 As $g'_2|_{U'} \circ \bar{a}|_{V'} = g'_2|_{U'} \circ \bar{b}|_{V'}$, we have $\bar{a}|_{V'} = \bar{b}|_{V'}$.
 
-On the other hand, $U' \subset C_2$ is scheme theoretically dense.
+On the other hand, the fibers $(U')_t \subset C_2$ are scheme theoretically dense by tag 0BXG and 083P. Lemma \ref{cm-dense-fibers} implies $U' \subset C_2$ is scheme theoretically dense.
 Since $\bar{a}$ and $\bar{b}$ are isomorphisms, $\bar{a}^{-1}(U') \cap \bar{b}^{-1}(U') \subset C_1$ is scheme theoretically dense by Lemma~Tag 0837.
 Lemma~Tag 084N shows that $\bar{a} = \bar{b}$, and thus $a = b$.
 \end{proof}
@@ -298,32 +306,36 @@ Lemma~Tag 084N shows that $\bar{a} = \bar{b}$, and thus $a = b$.
 	\label{cm-rep-diagonal}
 \end{lemma}
 \begin{proof}
-	Let $( (h_0,C_0\rightarrow T, g_0) ,( h_1, C_1\rightarrow T, g_1))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$.
-	First, observe that the pair induces an element $(C_0\rightarrow T,C_1\rightarrow T)$ in $\textit{B-curves}\times \textit{B-curves}(T)$.
-	Because $\textit{B-curves}$ is an algebraic stack, its diagonal pulled back to $T$ is an algebraic space $U$.
+	Let $( (h_1,C_1\rightarrow T, g_1) ,( h_2, C_2\rightarrow T, g_2))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$.
+	
+	First, observe that the pair induces an element $((C_1\rightarrow T, h_1), (C_2\rightarrow T, h_2))$ in $\textit{B-curves}\times \textit{B-curves}(T)$.
+	As the diagonal of $\textit{B-curves}$ is representable by algebraic spaces, there is a curve $C' \to T'$ equalizing the pair in $\textit{B-curves}$. \\
+	Now observe that $C'$ admits two maps to $X$ via $g_1$ and $g_2$ as in the diagram below. 
 
-	At this point, we have
-	\[\xymatrix{
-		C\ar[d] & \\
-		U\ar[r] & T
-	}\]
-	and two $T$-morphisms $C\xrightarrow{g_0,g_1} X$.
-	Then using the fact that $Mor(C,X)$ is an algebraic stack, the equalizer defines an algebraic space $V$ over $T$ with the property that
-	\[\xymatrix{
-		C\ar[rr]\ar[dr]\ar[dd]&&C_0\ar[dd]|!{[dl];[dr]}\hole\ar[dr]^{g_0}&\\
-		&C_1\ar[rr]^(.25){g_1}\ar[dr]& & X\ar[d]\\
-		V\ar[rr]& & T\ar[r]^{h} & B
+\[\xymatrix{
+		C'\ar[rr]\ar[dr]\ar[dd]&&C_1\ar[dd]|!{[dl];[dr]}\hole\ar[dr]^{g_1}&\\
+		&C_2\ar[rr]^(.25){g_2}\ar[dr]& & X\ar[d]\\
+		T'\ar[rr]& & T\ar@<.5ex>[r]^{h_1} \ar@<-.5ex>[r]_{h_2} & B
 	}
-	\]
-	is commutative.
+	\]	
+	
+	These two maps define a morphism $T' \to \Mor_{T'}(C',X_{T'}) \times \Mor_{T'}(C',X_{T'})$. As $X_{T'} \to T'$ is finitely presented and separated, and $C'\to T'$ is of finite presentation, flat, and proper, $\Mor_{T'}(C',X_{T'})$ is an algebraic space (Tag 0D1C). Hence it has representable diagonal and pulling back yields an algebraic space $T'' \to \Mor_{T'}(C',X_T')$. This gives a commuting square:
+	$$
+	\xymatrix{
+	C'' \ar[r] \ar[d] & X \ar[d]\\
+	T'' \ar[r] & B
+}
+$$
 
-	Because $C\cong C_0|_V$, properties (2) and (3) hold because they are stable under base change.
-	For property (4), simply pull back the open set in $C_0$ to $C$.
+
+
+	Because $C''\cong C_1|_T''$, properties (2) and (3) hold because they are stable under base change.
+	For property (4), simply pull back the open set in $C_1$ to $C$ as in Remark \ref{cm-base-change}. Thus we have a well defined object which by construction is the pullback of $( (h_1,C_1\rightarrow T, g_1) ,( h_2, C_2\rightarrow T, g_2))\in \CMfunctor_{X/B}\times\CMfunctor_{X/B}(T)$ via the diagonal.
 	This demonstrates that $\Delta$ is representable.
 
-	Now, we note that $U\rightarrow T$ is quasicompact as it is the pullback of the diagonal of $\text{B-curves}$ to $T$ (Lemma Tag 0DSQ).
-	Next, $V\rightarrow U$ is quasicompact as it is the pullback of the diagonal of $Mor(C,X)$ to $U$ (Lemma Tag 0DPM).
-	Thus, $V\rightarrow T$ is quasicompact.
+	Now, we note that $T'\rightarrow T$ is quasicompact as it is the pullback of the diagonal of $\text{B-curves}$ to $T$ (Lemma Tag 0DSQ).
+	Next, $T''\rightarrow T'$ is quasicompact as it is the pullback of the diagonal of $Mor_{T'}(C',X_{T'})$ to $T'$ (Lemma Tag 0DPM).
+	Thus, $T''\rightarrow T$ is quasicompact.
 \end{proof}
 
 \begin{lemma}
@@ -730,3 +742,4 @@ Hence all local rings of $S$ are G-rings. Thus (3) holds and the proof is comple
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
 \end{document}
+
