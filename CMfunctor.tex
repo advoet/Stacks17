@@ -689,6 +689,43 @@ Hence all local rings of $S$ are G-rings. Thus (3) holds and the proof is comple
 	
 \end{proof}
 
+\begin{lemma}
+	In Situation \ref{situation-cm}, Let $T$ be a $B$-scheme and $(h,C\rightarrow T,g)\in \CMfunctor_{X/B}(T)$.
+	Suppose that $U\subset C$ is open with the property that $U$ restricted to any fiber over $T$ is schematically dense.
+	Then $U$ is schematically dense in $C$.
+	\label{lemma-sch-dense-in-fibers-means-sch-dense}
+\end{lemma}
+\begin{proof}
+	Let $Z$ denote the schematic closure of $U$ in $C$ and let $W=X\setminus U$.	
+
+	If we find an open set defined by a non-zero divisor such that the restriction of $I_Z=0$, it will follow that $I_Z=0$ and that $C$ is the schematic closure of $U$.
+
+	Moreover, certainly $I_Z|_U=0$ by the definition of $Z$, and so our strategy will be to find a non-zero divisor $f$ such that $D(f)\subset U$.
+	Thus, it is enough to provide a non-zero divisor $f\in I_W$.
+
+	Suppose that $x$ is a point where the scheme-theoretic closure of $U$ is not equal to $C$--that is
+	\[\mathcal{O}_{C,x}\not{\hspace{-.05in}\cong}\mathcal{O}_{Z,x}.\]
+	Denote by $F$ the fiber over $T$ containing $x$.
+
+	Because $C\rightarrow T$ is flat and of finite presentation, we may apply \cite[Tag 046Z]{stacks-project} to 
+	\[\mathcal{O}_{T,x}\rightarrow\mathcal{O}_{C,x}.\]
+	In particular, if $f\in\mathcal{O}_{C,x}$ is a nonzerodivisor
+	in $\mathcal{O}_{C,x}/\mathfrak{m}_{T,x}\mathcal{O}_{C,x}$, then $f$ 
+	is a nonzerodivisor.
+
+	But 
+	\[\mathcal{O}_{C,x}/\mathfrak{m}_{T,x}\mathcal{O}_{C,x}\cong\mathcal{O}_{F,x},\]
+	and so certainly there are nonzerodivisors because every fiber is Cohen-Macaulay.
+
+	In particular, because $\mathcal{O}_{F,x}$ is Noetherian, the maximal ideal has a system of parameters--there is an $\bar{f}$ such that
+	\[\sqrt{(\bar{f})}=\mathfrak{m}_{F,x}.\]
+
+	On the other hand, clearly $\sqrt{\overline{I}_W}=\mathfrak{m}_{F,x}$.
+	Thus, taking powers if necessary, we may assume that $\bar{f}\in\overline{I}_W$.
+	Any lift of $\bar{f}$ to $\mathcal{O}_{C,x}$ lies in $I_{W,x}+\mathfrak{m}_{T,x}$.
+	Adding any element of $\mathfrak{m}_{T,x}$ to $f$ does not change its image, and so we may assume that $f\in I_{W,x}$ and lift to an element of $I_W$.
+
+	We have found a non-zero divisor $f\in I_W$, and the proof is complete.
 \end{proof}
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
